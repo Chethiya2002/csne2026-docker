@@ -1,0 +1,8 @@
+{
+"services": {
+"dns": {"image": "chethiya02/csne-dns:2026", "container_name": "dns", "volumes": ["./dns/named.conf:/etc/bind/named.conf:ro", "./dns/db.csne2026.test:/etc/bind/zones/db.csne2026.test:ro"], "networks": {"labnet": {"ipv4_address": "192.168.26.10"}}, "restart": "unless-stopped"},
+"dhcp": {"image": "chethiya02/csne-dhcp:2026", "container_name": "dhcp", "volumes": ["./dhcp/dhcpd.conf:/etc/dhcp/dhcpd.conf:ro"], "networks": {"labnet": {"ipv4_address": "192.168.26.5"}}, "restart": "unless-stopped"},
+"squid": {"image": "chethiya02/csne-squid:2026", "container_name": "squid", "cpus": 1.0, "mem_limit": "512m", "volumes": ["./squid/squid.conf:/etc/squid/squid.conf:ro"], "networks": {"labnet": {"ipv4_address": "192.168.26.20"}}, "restart": "unless-stopped"}
+},
+"networks": {"labnet": {"name": "labnet", "driver": "bridge", "ipam": {"config": [{"subnet": "192.168.26.0/24", "gateway": "192.168.26.1", "ip_range": "192.168.26.192/26"}]}}}
+}
