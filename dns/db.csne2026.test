@@ -1,0 +1,6 @@
+$TTL 3600
+@     IN SOA ns1.csne2026.test. admin.csne2026.test. ( 2026010101 3600 900 604800 300 )
+@     IN NS  ns1.csne2026.test.
+ns1   IN A   192.168.26.10
+@     IN A   192.168.26.10
+proxy IN A   192.168.26.20
